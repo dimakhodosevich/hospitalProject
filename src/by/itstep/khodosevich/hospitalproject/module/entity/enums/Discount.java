@@ -1,4 +1,4 @@
-package by.itstep.khodosevich.hospitalproject.module.entity.discount;
+package by.itstep.khodosevich.hospitalproject.module.entity.enums;
 
 public enum Discount {
     THREE_PERCENT(0.03), FIVE_PERCENT(0.05), TEN_PERCENT(0.1), TWENTY_FIVE_PERCENT(0.25), WITHOUT_DISCOUNT(0);

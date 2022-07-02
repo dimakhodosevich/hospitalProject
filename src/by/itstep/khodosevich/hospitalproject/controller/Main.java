@@ -1,17 +1,8 @@
 package by.itstep.khodosevich.hospitalproject.controller;
 
-import by.itstep.khodosevich.hospitalproject.module.container.mycontainers.ArrayDynamicContainer;
-import by.itstep.khodosevich.hospitalproject.module.container.mycontainers.ArrayStaticContainer;
 import by.itstep.khodosevich.hospitalproject.module.container.mycontainers.LinkedListContainer;
 import by.itstep.khodosevich.hospitalproject.module.container.mycontainers.MyCollection;
-import by.itstep.khodosevich.hospitalproject.module.entity.abstractions.Person;
-import by.itstep.khodosevich.hospitalproject.module.entity.discount.Discount;
-import by.itstep.khodosevich.hospitalproject.module.entity.disease.Disease;
-import by.itstep.khodosevich.hospitalproject.module.entity.enheritance.Worker;
-import by.itstep.khodosevich.hospitalproject.module.entity.medicine.Drug;
-import by.itstep.khodosevich.hospitalproject.module.logic.Doctor;
-
-import java.util.ArrayList;
+import by.itstep.khodosevich.hospitalproject.module.entity.enums.Drug;
 
 public class Main {
     public static void main(String[] args) {

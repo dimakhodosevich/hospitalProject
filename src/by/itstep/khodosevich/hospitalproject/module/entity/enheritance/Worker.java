@@ -1,9 +1,9 @@
 package by.itstep.khodosevich.hospitalproject.module.entity.enheritance;
 
 import by.itstep.khodosevich.hospitalproject.module.entity.abstractions.Person;
-import by.itstep.khodosevich.hospitalproject.module.entity.discount.Discount;
-import by.itstep.khodosevich.hospitalproject.module.entity.disease.Disease;
-import by.itstep.khodosevich.hospitalproject.module.entity.medicine.Drug;
+import by.itstep.khodosevich.hospitalproject.module.entity.enums.Discount;
+import by.itstep.khodosevich.hospitalproject.module.entity.enums.Disease;
+import by.itstep.khodosevich.hospitalproject.module.entity.enums.Drug;
 
 import java.util.List;
 

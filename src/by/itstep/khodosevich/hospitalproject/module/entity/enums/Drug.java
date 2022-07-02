@@ -1,4 +1,4 @@
-package by.itstep.khodosevich.hospitalproject.module.entity.medicine;
+package by.itstep.khodosevich.hospitalproject.module.entity.enums;
 
 public enum Drug {
     PARACETAMOL(3, 3), IBUKLIN(6, 6), INJECTION(8, 8), VITAMIN(1, 1), NO_DRUG(0, 0);

@@ -1,4 +1,4 @@
-package by.itstep.khodosevich.hospitalproject.module.entity.disease;
+package by.itstep.khodosevich.hospitalproject.module.entity.enums;
 
 public enum Disease {
     ANGINA(15), NAUSEA(7), HEADACHE(5), COVID(35), FRACTURE(30), NO_DISEASE(0);
