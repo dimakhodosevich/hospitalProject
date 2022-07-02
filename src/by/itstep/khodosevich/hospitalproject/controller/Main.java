@@ -3,21 +3,25 @@ package by.itstep.khodosevich.hospitalproject.controller;
 import by.itstep.khodosevich.hospitalproject.module.entity.abstractions.Person;
 import by.itstep.khodosevich.hospitalproject.module.entity.discount.Discount;
 import by.itstep.khodosevich.hospitalproject.module.entity.disease.Disease;
-import by.itstep.khodosevich.hospitalproject.module.entity.enheritance.Student;
 import by.itstep.khodosevich.hospitalproject.module.entity.enheritance.Worker;
 import by.itstep.khodosevich.hospitalproject.module.entity.medicine.Drug;
-import by.itstep.khodosevich.hospitalproject.view.Printer;
+import by.itstep.khodosevich.hospitalproject.module.logic.Doctor;
+
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        Student s = new Student("Dima", 27, 70, Disease.ANGINA, new Drug[]{Drug.NO_DRUG, Drug.IBUKLIN, Drug.INJECTION},
-                Discount.TEN_PERCENT, 65,  "BNTU");
-        Printer.printToConsole(s);
-        Printer.printToConsole(s.getHistoryOfTreatment());
-        Printer.printToConsole("---------\n");
-        Worker w = new Worker("Vlada", 26, 85,Disease.NO_DISEASE, new Drug[]{Drug.NO_DRUG},
-                Discount.TEN_PERCENT,42, "teacher");
-        Printer.printToConsole(w);
-        Printer.printToConsole(w.getHistoryOfTreatment());
+        Person s1 = new Worker("Dima", 27, 50, Disease.NO_DISEASE, new ArrayList<Drug>(),
+                Discount.TEN_PERCENT, 80, "engineer");
+
+        Doctor doctor = new Doctor();
+        doctor.defineDisease(s1);
+//        doctor.defineDiscount(s1);
+        doctor.toTreat(s1);
+        System.out.println(s1.getTreatment());
+        System.out.println(doctor.getPriceForTreatment(s1));
+        System.out.println(s1);
+
+
     }
 }

@@ -5,17 +5,19 @@ import by.itstep.khodosevich.hospitalproject.module.entity.discount.Discount;
 import by.itstep.khodosevich.hospitalproject.module.entity.disease.Disease;
 import by.itstep.khodosevich.hospitalproject.module.entity.medicine.Drug;
 
+import java.util.List;
+
 public class Student extends Person {
     private double stipend;
     private String universityName;
 
     public Student() {
-        stipend =0;
+        stipend = 0;
         universityName = "no name";
     }
 
     public Student(String name, int age, int hp, Disease disease,
-                   Drug[] drugs, Discount discount, double stipend, String universityName) {
+                   List drugs, Discount discount, double stipend, String universityName) {
         super(name, age, hp, disease, drugs, discount);
         this.stipend = stipend;
         this.universityName = universityName;
@@ -44,16 +46,19 @@ public class Student extends Person {
     }
 
     @Override
-    public double getMoneyAfterTreatment(Discount discount) {
-        return stipend-(getPriceForTreatment()-getPriceForTreatment()*discount.getDiscount());
+    public double getBudget() {
+        return stipend;
+    }
+
+    @Override
+    public void setBudget(Drug drug) {
+        stipend -= (drug.getPrice() - drug.getPrice() * getDiscount().getDiscountValue());
     }
 
     @Override
     public String toString() {
-        String msg = String.format(", stipend: %2.2f, university name: %s, %s, hp after damage: %d" +
-                        ", hp after treatment: %d, price for treatment: %.2f, discount: %s, money after treatment: %.2f.\n",
-                stipend, universityName, getDisease(), getHpAfterDamage(), getHpAfterTreatment(),
-                getPriceForTreatment(), getDiscount(), getMoneyAfterTreatment(getDiscount()));
+        String msg = String.format(", stipend: %2.2f, university name: %s, %s, discount: %s.\n",
+                stipend, universityName, getDisease(), getDiscount());
         return super.toString() + msg;
     }
 }

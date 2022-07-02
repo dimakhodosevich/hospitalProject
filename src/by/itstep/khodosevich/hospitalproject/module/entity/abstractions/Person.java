@@ -4,12 +4,15 @@ import by.itstep.khodosevich.hospitalproject.module.entity.discount.Discount;
 import by.itstep.khodosevich.hospitalproject.module.entity.disease.Disease;
 import by.itstep.khodosevich.hospitalproject.module.entity.medicine.Drug;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Person {
     private String name;
     private int age;
     private int hp;
     private Disease disease;
-    private Drug[] treatment;
+    private List<Drug> treatment;
     private Discount discount;
 
     public Person() {
@@ -17,11 +20,12 @@ public abstract class Person {
         age = 0;
         hp = 0;
         disease = Disease.NO_DISEASE;
-        treatment = new Drug[]{Drug.NO_DRUG};
+        treatment = new ArrayList<>();
+        treatment.add(Drug.NO_DRUG);
         discount = Discount.WITHOUT_DISCOUNT;
     }
 
-    public Person(String name, int age, int hp, Disease disease, Drug[] drugs, Discount discount) {
+    public Person(String name, int age, int hp, Disease disease, List drugs, Discount discount) {
         this.name = name;
         this.age = age;
         this.hp = hp;
@@ -30,7 +34,7 @@ public abstract class Person {
         this.discount = discount;
     }
 
-    public Person(Person person){
+    public Person(Person person) {
         name = person.name;
         age = person.age;
         hp = person.hp;
@@ -71,11 +75,11 @@ public abstract class Person {
         this.disease = disease;
     }
 
-    public Drug[] getTreatment() {
+    public List<Drug> getTreatment() {
         return treatment;
     }
 
-    public void setTreatment(Drug[] treatment) {
+    public void setTreatment(List<Drug> treatment) {
         this.treatment = treatment;
     }
 
@@ -87,43 +91,17 @@ public abstract class Person {
         this.discount = discount;
     }
 
-    public String getHistoryOfTreatment(){
-        StringBuilder builder =new StringBuilder();
-        for(Drug drug: treatment){
-            builder.append(drug).append("\n");
-        }
+    abstract public double getBudget();
 
-        return builder.toString();
-    }
+    abstract public void setBudget(Drug drug);
 
-    public int getHpAfterTreatment(){
-        int temp = getHpAfterDamage();
-        for(Drug drug: treatment){
-            temp+=drug.getPower();
-        }
-
-        return temp;
-    }
-
-    public int getHpAfterDamage(){
-        int temp = hp;
-        temp-= disease.getDamage();
-        return temp;
-    }
-
-    abstract public double getMoneyAfterTreatment(Discount discount);
-
-    public double getPriceForTreatment() {
-        double moneyForTreatment = 0;
-        for(Drug drug: getTreatment()){
-            moneyForTreatment+= drug.getPrice();
-        }
-        return moneyForTreatment;
+    public void treat(Drug drug) {
+        setHp(getHp() + drug.getPower());
     }
 
     @Override
     public String toString() {
-        String msg = String.format("Name: %20s, age: %2d, hp: %2d",name, age, getHp() );
+        String msg = String.format("Name: %20s, age: %2d, hp: %2d", name, age, hp);
         return msg;
     }
 }

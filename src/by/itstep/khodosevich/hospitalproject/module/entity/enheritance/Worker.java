@@ -5,6 +5,8 @@ import by.itstep.khodosevich.hospitalproject.module.entity.discount.Discount;
 import by.itstep.khodosevich.hospitalproject.module.entity.disease.Disease;
 import by.itstep.khodosevich.hospitalproject.module.entity.medicine.Drug;
 
+import java.util.List;
+
 public class Worker extends Person {
     private double insurance;
     private String profession;
@@ -15,7 +17,7 @@ public class Worker extends Person {
     }
 
     public Worker(String name, int age, int hp, Disease disease,
-                  Drug[] drugs, Discount discount, double insurance, String profession) {
+                  List drugs, Discount discount, double insurance, String profession) {
         super(name, age, hp, disease, drugs, discount);
         this.insurance = insurance;
         this.profession = profession;
@@ -43,18 +45,22 @@ public class Worker extends Person {
         this.profession = profession;
     }
 
+
     @Override
-    public double getMoneyAfterTreatment(Discount discount) {
-        return insurance - (getPriceForTreatment()-getPriceForTreatment()*discount.getDiscount());
+    public double getBudget() {
+        return insurance;
+    }
+
+    @Override
+    public void setBudget(Drug drug) {
+        insurance -= (drug.getPrice() - drug.getPrice()
+                * getDiscount().getDiscountValue());
     }
 
     @Override
     public String toString() {
-        String msg = String.format(", insurance: %.2f, profession: %s, %s, hp after damage: %d" +
-                        ", hp after treatment: %d, price for treatment: %.2f, discount: %s," +
-                        " money after treatment: %.2f.\n",
-                insurance,profession, getDisease(), getHpAfterDamage(), getHpAfterTreatment(),
-                getPriceForTreatment(), getDiscount(),getMoneyAfterTreatment(getDiscount()));
-        return super.toString()+msg;
+        String msg = String.format(", insurance: %.2f, profession: %s, %s, discount: %s.\n,",
+                insurance, profession, getDisease(), getDiscount());
+        return super.toString() + msg;
     }
 }

@@ -1,7 +1,5 @@
 package by.itstep.khodosevich.hospitalproject.module.entity.discount;
 
-import by.itstep.khodosevich.hospitalproject.module.entity.medicine.Drug;
-
 public enum Discount {
     THREE_PERCENT(0.03), FIVE_PERCENT(0.05), TEN_PERCENT(0.1), TWENTY_FIVE_PERCENT(0.25), WITHOUT_DISCOUNT(0);
 
@@ -11,7 +9,7 @@ public enum Discount {
         this.discount = discount;
     }
 
-    public double getDiscount() {
+    public double getDiscountValue() {
         return discount;
     }
 
