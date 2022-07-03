@@ -1,5 +1,7 @@
 package by.itstep.khodosevich.hospitalproject;
 
+import by.itstep.khodosevich.hospitalproject.module.container.mycontainers.ArrayDynamicContainer;
+import by.itstep.khodosevich.hospitalproject.module.container.mycontainers.MyCollection;
 import by.itstep.khodosevich.hospitalproject.module.entity.abstractions.Person;
 import by.itstep.khodosevich.hospitalproject.module.entity.enums.Discount;
 import by.itstep.khodosevich.hospitalproject.module.entity.enums.Disease;
@@ -16,7 +18,7 @@ public class DoctorTest {
 
     @Test
     public void toTreatTestWithZeroArguments() {
-        Person s1 = new Worker("Dima", 27, 0, Disease.NO_DISEASE, new ArrayList<Drug>(),
+        Person s1 = new Worker("Dima", 27, 0, Disease.NO_DISEASE, new ArrayDynamicContainer<Drug>(),
                 Discount.TEN_PERCENT, 0, "engineer");
         Doctor doctor = new Doctor();
 
@@ -34,7 +36,7 @@ public class DoctorTest {
 
     @Test
     public void toTreatTestWithMaxArguments() {
-        Person s1 = new Worker("Dima", 27, 100, Disease.NO_DISEASE, new ArrayList<Drug>(),
+        Person s1 = new Worker("Dima", 27, 100, Disease.NO_DISEASE, new ArrayDynamicContainer<Drug>(),
                 Discount.TEN_PERCENT, 0, "engineer");
         Doctor doctor = new Doctor();
 
@@ -52,7 +54,7 @@ public class DoctorTest {
 
     @Test
     public void toTreatTestWithDefaultArguments() {
-        Person s1 = new Worker("Dima", 27, 30, Disease.NO_DISEASE, new ArrayList<Drug>(),
+        Person s1 = new Worker("Dima", 27, 30, Disease.NO_DISEASE, new ArrayDynamicContainer<Drug>(),
                 Discount.TEN_PERCENT, 100, "engineer");
         Doctor doctor = new Doctor();
 
@@ -70,7 +72,7 @@ public class DoctorTest {
 
     @Test
     public void toTreatTestWithCheapestDrug() {
-        Person s1 = new Worker("Dima", 27, 0, Disease.NO_DISEASE, new ArrayList<Drug>(),
+        Person s1 = new Worker("Dima", 27, 0, Disease.NO_DISEASE, new ArrayDynamicContainer<Drug>(),
                 Discount.WITHOUT_DISCOUNT, 1, "engineer");
         Doctor doctor = new Doctor();
 
@@ -85,7 +87,7 @@ public class DoctorTest {
 
     @Test
     public void toTreatTestWithTwoCheapestDrug() {
-        Person s1 = new Worker("Dima", 27, 0, Disease.NO_DISEASE, new ArrayList<Drug>(),
+        Person s1 = new Worker("Dima", 27, 0, Disease.NO_DISEASE, new ArrayDynamicContainer<Drug>(),
                 Discount.WITHOUT_DISCOUNT, 2, "engineer");
         Doctor doctor = new Doctor();
 
@@ -100,11 +102,11 @@ public class DoctorTest {
 
     @Test
     public void getPriceForTreatmentTest() {
-        Person s1 = new Worker("Dima", 27, 0, Disease.NO_DISEASE, new ArrayList<Drug>(),
+        Person s1 = new Worker("Dima", 27, 0, Disease.NO_DISEASE, new ArrayDynamicContainer<Drug>(),
                 Discount.TEN_PERCENT, 100, "engineer");
         Doctor doctor = new Doctor();
 
-        ArrayList<Drug> drugs = new ArrayList<>();
+        MyCollection<Drug> drugs = new ArrayDynamicContainer<>();
         drugs.add(Drug.IBUKLIN);
         drugs.add(Drug.INJECTION);
         drugs.add(Drug.PARACETAMOL);

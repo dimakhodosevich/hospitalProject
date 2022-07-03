@@ -1,6 +1,6 @@
 package by.itstep.khodosevich.hospitalproject.module.container.mycontainers;
 
-public abstract class MyCollection<T>{
+public abstract class MyCollection<T> implements MyIterator{
 
     public abstract int size();
 

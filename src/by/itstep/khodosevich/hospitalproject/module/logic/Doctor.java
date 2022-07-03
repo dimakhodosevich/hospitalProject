@@ -1,12 +1,13 @@
 package by.itstep.khodosevich.hospitalproject.module.logic;
 
+import by.itstep.khodosevich.hospitalproject.module.container.mycontainers.ArrayDynamicContainer;
+import by.itstep.khodosevich.hospitalproject.module.container.mycontainers.MyCollection;
+import by.itstep.khodosevich.hospitalproject.module.container.mycontainers.MyIterable;
 import by.itstep.khodosevich.hospitalproject.module.entity.abstractions.Person;
 import by.itstep.khodosevich.hospitalproject.module.entity.enums.Discount;
 import by.itstep.khodosevich.hospitalproject.module.entity.enums.Disease;
 import by.itstep.khodosevich.hospitalproject.module.entity.enums.Drug;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class Doctor {
@@ -26,7 +27,7 @@ public class Doctor {
     }
 
     public void toTreat(Person person) {
-        List<Drug> list = new ArrayList<>();
+        MyCollection<Drug> list = new ArrayDynamicContainer<>();
 
         double cheapPrice = Drug.getCheapDrugPrice().getPrice();
         int weakPower = Drug.getWeakDrugPower().getPower();
@@ -57,8 +58,11 @@ public class Doctor {
 
     public double getPriceForTreatment(Person person) {
         double totalPrice = 0;
-        for (Drug drug : person.getTreatment()) {
-            totalPrice += drug.getPrice();
+
+        MyIterable<Drug> iterable = person.getTreatment().getIterator();
+
+        while(iterable.hasNext()){
+            totalPrice += iterable.next().getPrice();
         }
 
         return totalPrice - totalPrice * person.getDiscount().getDiscountValue();

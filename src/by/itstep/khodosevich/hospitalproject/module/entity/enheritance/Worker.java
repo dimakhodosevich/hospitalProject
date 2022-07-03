@@ -1,11 +1,13 @@
 package by.itstep.khodosevich.hospitalproject.module.entity.enheritance;
 
+import by.itstep.khodosevich.hospitalproject.module.container.mycontainers.MyCollection;
 import by.itstep.khodosevich.hospitalproject.module.entity.abstractions.Person;
 import by.itstep.khodosevich.hospitalproject.module.entity.enums.Discount;
 import by.itstep.khodosevich.hospitalproject.module.entity.enums.Disease;
 import by.itstep.khodosevich.hospitalproject.module.entity.enums.Drug;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Worker extends Person {
     private double insurance;
@@ -17,7 +19,7 @@ public class Worker extends Person {
     }
 
     public Worker(String name, int age, int hp, Disease disease,
-                  List drugs, Discount discount, double insurance, String profession) {
+                  MyCollection<Drug> drugs, Discount discount, double insurance, String profession) {
         super(name, age, hp, disease, drugs, discount);
         this.insurance = insurance;
         this.profession = profession;
@@ -59,8 +61,45 @@ public class Worker extends Person {
 
     @Override
     public String toString() {
-        String msg = String.format(", insurance: %.2f, profession: %s, %s, discount: %s.\n,",
+        String msg = String.format(", insurance: %.2f, profession: %s, %s, discount: %s.\n",
                 insurance, profession, getDisease(), getDiscount());
         return super.toString() + msg;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o==null) return false;
+        if (this==o) return true;
+        boolean result = super.equals(o);
+
+        if(result){
+            if(!(o instanceof Worker)) return false;
+            Worker worker = (Worker) o;
+            result = profession.equals(worker.getProfession());
+        }
+
+        return result;
+    }
+
+    @Override
+    public int hashCode() {
+        int prime = 31;
+        int result = super.hashCode();
+        result = prime*result + Objects.hash(insurance);
+        result = prime*result + profession.hashCode();
+
+        return result;
+    }
+
+    @Override
+    public int compareTo(Person o) {
+        int result = super.compareTo(o);
+
+        if(result==0){
+            Worker worker = (Worker) o;
+            result=profession.compareTo(worker.getProfession());
+        }
+
+        return result;
     }
 }

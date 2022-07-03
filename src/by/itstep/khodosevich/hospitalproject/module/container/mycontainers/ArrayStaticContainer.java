@@ -71,6 +71,11 @@ public class ArrayStaticContainer<T> extends MyCollection<T> {
     }
 
     @Override
+    public MyIterable getIterator() {
+        return new MyIterable<T>(this);
+    }
+
+    @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
 

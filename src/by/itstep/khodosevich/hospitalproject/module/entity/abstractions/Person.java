@@ -1,18 +1,21 @@
 package by.itstep.khodosevich.hospitalproject.module.entity.abstractions;
 
+import by.itstep.khodosevich.hospitalproject.module.container.mycontainers.ArrayDynamicContainer;
+import by.itstep.khodosevich.hospitalproject.module.container.mycontainers.MyCollection;
 import by.itstep.khodosevich.hospitalproject.module.entity.enums.Discount;
 import by.itstep.khodosevich.hospitalproject.module.entity.enums.Disease;
 import by.itstep.khodosevich.hospitalproject.module.entity.enums.Drug;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public abstract class Person {
+public abstract class Person implements Comparable<Person> {
     private String name;
     private int age;
     private int hp;
     private Disease disease;
-    private List<Drug> treatment;
+    private MyCollection<Drug> treatment;
     private Discount discount;
 
     public Person() {
@@ -20,12 +23,12 @@ public abstract class Person {
         age = 0;
         hp = 0;
         disease = Disease.NO_DISEASE;
-        treatment = new ArrayList<>();
+        treatment = new ArrayDynamicContainer<>();
         treatment.add(Drug.NO_DRUG);
         discount = Discount.WITHOUT_DISCOUNT;
     }
 
-    public Person(String name, int age, int hp, Disease disease, List drugs, Discount discount) {
+    public Person(String name, int age, int hp, Disease disease, MyCollection<Drug> drugs, Discount discount) {
         this.name = name;
         this.age = age;
         this.hp = hp;
@@ -75,11 +78,11 @@ public abstract class Person {
         this.disease = disease;
     }
 
-    public List<Drug> getTreatment() {
+    public MyCollection<Drug> getTreatment() {
         return treatment;
     }
 
-    public void setTreatment(List<Drug> treatment) {
+    public void setTreatment(MyCollection<Drug> treatment) {
         this.treatment = treatment;
     }
 
@@ -101,7 +104,39 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        String msg = String.format("Name: %20s, age: %2d, hp: %2d", name, age, hp);
+        String msg = String.format("Name: %2s, age: %2d, hp: %2d", name, age, hp);
         return msg;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) return false;
+        if (this == o) return true;
+        if (!(o instanceof Person)) return false;
+
+        Person person = (Person) o;
+
+        boolean result = false;
+        if(name.equals(person.name)){
+                if(age == person.getAge()){
+                    result = true;
+                }
+        }
+
+        return result;
+    }
+
+    @Override
+    public int hashCode() {
+        int prime = 31;
+        int result = name.hashCode();
+        result = result*prime + Objects.hash(age);
+        return result;
+    }
+
+
+    @Override
+    public int compareTo(Person o) {
+        return name.compareTo(o.name);
     }
 }
