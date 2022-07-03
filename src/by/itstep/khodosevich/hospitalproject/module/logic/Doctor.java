@@ -56,7 +56,7 @@ public class Doctor {
         person.setTreatment(list);
     }
 
-    public double getPriceForTreatment(Person person) {
+    public static double getPriceForTreatment(Person person) {
         double totalPrice = 0;
 
         MyIterable<Drug> iterable = person.getTreatment().getIterator();

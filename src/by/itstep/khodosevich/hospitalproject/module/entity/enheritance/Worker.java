@@ -61,7 +61,7 @@ public class Worker extends Person {
 
     @Override
     public String toString() {
-        String msg = String.format(", insurance: %.2f, profession: %s, %s, discount: %s.\n",
+        String msg = String.format(", insurance: %.2f, profession: %s, %s, discount: %s.",
                 insurance, profession, getDisease(), getDiscount());
         return super.toString() + msg;
     }
@@ -96,6 +96,7 @@ public class Worker extends Person {
         int result = super.compareTo(o);
 
         if(result==0){
+            if(!(o instanceof Worker)) return -1;
             Worker worker = (Worker) o;
             result=profession.compareTo(worker.getProfession());
         }

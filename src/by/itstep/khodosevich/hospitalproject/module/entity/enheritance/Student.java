@@ -59,7 +59,7 @@ public class Student extends Person {
 
     @Override
     public String toString() {
-        String msg = String.format(", stipend: %2.2f, university name: %s, %s, discount: %s.\n",
+        String msg = String.format(", stipend: %2.2f, university name: %s, %s, discount: %s.",
                 stipend, universityName, getDisease(), getDiscount());
         return super.toString() + msg;
     }
@@ -95,6 +95,7 @@ public class Student extends Person {
         int result = super.compareTo(o);
 
         if(result==0){
+            if(!(o instanceof Student)) return -1;
             Student student = (Student)o;
             result=universityName.compareTo(student.getUniversityName());
         }

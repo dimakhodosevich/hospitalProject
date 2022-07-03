@@ -104,7 +104,7 @@ public abstract class Person implements Comparable<Person> {
 
     @Override
     public String toString() {
-        String msg = String.format("Name: %2s, age: %2d, hp: %2d", name, age, hp);
+        String msg = String.format("\nName: %2s, age: %2d, hp: %2d", name, age, hp);
         return msg;
     }
 
