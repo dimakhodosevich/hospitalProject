@@ -1,6 +1,7 @@
 package by.itstep.khodosevich.hospitalproject.module.container.mycontainers;
 
 public class LinkedListContainer<T> extends MyCollection<T>{
+
     private Node first;
     private int size;
 

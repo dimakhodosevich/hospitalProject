@@ -1,6 +1,7 @@
 package by.itstep.khodosevich.hospitalproject.module.container.mycontainers;
 
 public class MyIterable<T> {
+
     private MyCollection list;
     private static int current;
 

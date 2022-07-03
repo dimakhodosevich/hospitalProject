@@ -2,6 +2,7 @@ package by.itstep.khodosevich.hospitalproject.module.container.mycontainers;
 
 public class ArrayDynamicContainer<T> extends MyCollection<T>{
 
+
     private int size;
     private T[] array;
 

@@ -1,6 +1,7 @@
 package by.itstep.khodosevich.hospitalproject.module.container.mycontainers;
 
 public class ArrayStaticContainer<T> extends MyCollection<T> {
+
     private static int defaultSize;
     private T[] array;
     private int size;
