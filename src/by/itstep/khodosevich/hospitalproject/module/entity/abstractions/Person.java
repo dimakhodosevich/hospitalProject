@@ -6,11 +6,10 @@ import by.itstep.khodosevich.hospitalproject.module.entity.enums.Discount;
 import by.itstep.khodosevich.hospitalproject.module.entity.enums.Disease;
 import by.itstep.khodosevich.hospitalproject.module.entity.enums.Drug;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Person implements Comparable<Person> {
+public abstract class Person implements Comparable<Person>, Serializable {
     private String name;
     private int age;
     private int hp;
@@ -104,7 +103,7 @@ public abstract class Person implements Comparable<Person> {
 
     @Override
     public String toString() {
-        String msg = String.format("\nName: %2s, age: %2d, hp: %2d", name, age, hp);
+        String msg = String.format("Name: %2s, age: %2d, hp: %2d", name, age, hp);
         return msg;
     }
 

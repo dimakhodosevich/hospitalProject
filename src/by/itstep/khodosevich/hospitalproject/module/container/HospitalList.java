@@ -1,9 +1,10 @@
 package by.itstep.khodosevich.hospitalproject.module.container;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HospitalList<T> {
+public class HospitalList<T> implements Serializable {
     private List<T> list;
 
     public HospitalList() {
